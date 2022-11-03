@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notacja duże O</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header><h1>Złożoność Duże O</h1></header>
+    <main>
+        
+        
+        <section>
+            
+            <div>
+                <h4><b>O(1)</b> - Złożoność stała</h4>
+            <article>Złożoność stała algorytmu jest w sytuacji, gdy dany problem rozwiązywany jest w stałym czasie bez względu na ilość danych wejściowych</article>
+            
+   
+            <p>Przykładem algorytmu, który posiada złożoność stałą jest: algorytm pozwolący ustalić sumę ciągu arytmetycznego</p>
+            <pre>
+                int ciag = [2, 5, 8, 11, 14];
+                int sumaCiagu(int ciag){
+                    int suma = (ciag[0] + ciag[ciag.length - 1]) / 2 * ciag.length;
+                    return suma
+                }
+                cout << sumaCigu(ciag);
+            </pre>
+        </div>
+        <img src="img/stala.png" alt="wykres funkcji stałej">
+        </section>
+        <section>
+            <div>
+                <h4><b>O(<sub>n</sub>)</b> - Złożoność liniowa</h4>
+                <article>Złożoność liniowa algotymu występuje, gdy dla danych wejściowych n, liczba operacji w zależności od n będzie wyrażoną funkcją liniową: f(n) = an + b</article>
+            
+                <p>Przykładem algotymu, którego klasą złożoności jesy złożoność liniowa: algorytm pozwalający wyznaczyć sumę elementów zbioru</p>
+                <pre>
+                    int zbior = [2, 6, -5, 2, 6, 0, -10];
+                    int sumaZbioru(int zbior){
+                        int suma = 0;
+                        for(int i = 0; i < zbior.length - 1; i++){
+                            suma += zbior[i];
+                        }
+                        return suma;
+                    }
+                    cout << sumaZbioru(zbior);
+
+                </pre>
+            </div>
+            <img src="img/liniowa.png" alt="wykres funkcji liniowej">
+        </section>
+        <section>
+            <div>
+                <h4><b>O(log(<sub>n</sub>))</b> - Złożoność logarytmiczna</h4>
+                <article>Złożoność logarytmiczna występuje, w przypadku gdy czas względem danych rośnie logarytmicznie, czyli dla zbioru o rozmiarze 2<sup>n</sup>, ilość operacji wyniesie n</sup></article>
+                
+                <p>Przykładem algorytmu o takiej złożoności jest: algorytm wyszukiwania binarnego</p>
+                <pre>
+                    int tab[100];
+                    for(int i = 0; i < tab.length - 1; i++){
+                        tab[i] = i;
+                    }
+                    int szukajBinarnie(int left, int right, int szukana){
+                        int sr = (l + p) / 2;
+                        if(szukana == tab[sr]){
+                            return sr;
+                        }
+                        if(szukana < tab[sr]){
+                            return szukajBinarnie(l, sr-1, szukana);
+                        }else{
+                            return szukajBinarnie(p, sr+1, szukana);
+                        }
+                    }
+                    cout << szukajBinarnie(0, 99, 88); 
+                </pre>
+            </div>
+            <img src="img/logarytmiczna.png" alt="wykres funkcji logarytmicznej">
+        </section>
+        <section>
+            <div>
+                <h4><b>O(n * log(<sub>n</sub>))</b> - złożoność liniowo-logarytmiczna</h4>
+                <article>Złożoność obliczeniowa występująca przy algorytmach, w których złożoność jest iloczynem funkcji liniowej i logarytmicznej. Ten typ złożoności występuje często przy algorytmach wykorzystujących zasadę "dziel i zwyciężaj".</article>
+                
+                <p>Przykładem algorytmu o klasie złożoności liniowo-logarytmicznej jest: algorytm sortowania przez scalanie</p>
+                <pre>
+                    int *pomocnicza;
+
+                    void scal(int tab[], int l, int sr, int p){
+                        int i = l, j = sr + 1;
+
+                        for(int k = l; k <= p; k++){
+                            pom[i] = tab[i];
+                        }
+                        for(int k = l; k <= p; k++){
+                            if(i <= sr){
+                                if(k <= p){
+                                    if(pom[j] < pom[i])
+                                        tab[k] = pom[j++];
+                                    else
+                                        tab[k] = pom[i++];
+                                }
+                                else 
+                                    tab[k] = pom[i++];
+
+                            }
+                            else{
+                                tab[k] = pom[j++];
+                            }
+                        }
+                    }
+                    void sortowanieScalanie(int tab[], int l, int p){
+                        if(p <= l) 
+                            return;
+                        int sr = (p + l) / 2;
+                        sortowanieScalanie(tab, l, sr);
+                        sortowanieScalanie(tab, sr+1, p);
+                        scal(tab, l, sr, p);
+
+                    }
+                </pre>
+            </div>
+            <img src="img/logarytmicznaliniowa.png" alt="wykres funkcji logarytmiczno-liniowej">
+        </section>
+        <section>
+            <div>
+                <h4><b>O(n<sup>2</sup>)</b> - Złożoność kwadratowa</h4>
+                <article>Występuje w takich sytuacjach, gdy liczba operacji rośnie proporcjonalnie do kwadratu rozmiaru danych wejściowych, np. do posortowania tablicy 3 elementowej, ilość operacji będzie równa 3<sup>2</sup> = 9</sup></article>
+                
+                <p>Przykładem algorytmuo takiej złożoności obliczeniowej jest: algorytm sortowania bąbelkowego</p>
+                <pre>
+                    void sortowanieBabelkowe(int tab[], int n){
+                        for(int i = 0; i < n; i++){
+                            for(int k = 1; k < n - i; k++){
+                                if(tab[j-1] > tab[j])
+                                    swap(tab[j-1], tab[j]);
+                            }
+                        }
+                    }
+                </pre>
+            </div>
+            <img src="img/kwadratowa.png" alt="wykres kwadratowy">
+        </section>
+        <section>
+            <div>
+                <h4><b>O(x<sup>n</sup>) - złożoność wykładnicza</b></h4>
+                <article>Klasa złożoności obliczeniowej, występująca przy algorytmach, w których czas wykonania rośnie względem rozmiaru danych.</article>
+                
+                <p>Przykładem algorytmu prezentującego ten typ złożoności, będzie agorytm który z tablicy liczb, wyznaczy wszystkie możliwe podzbiory wszystkich tych liczb</p>
+                <pre>
+                    int zbior(int[] numbers){
+                        int tpn = 1 << numbers.length;
+                        int[][] zbiorS = new int[tpn][];
+                        for(int i = 0; i < tpn; i++){
+                            zbiorS[i] = pick(i, numbers);
+                        }
+                        return zbiorS;
+                    }
+                    int pick(int i, int[] num){
+                        int hMO = 0;
+                        int temp = i;
+
+                        while(temp > 0){
+                            if(temp % 2 == 1){
+                                hMO++;
+                            }
+                            temp >>= 1;
+                        }
+
+                        int[] sub = new int[hMO];
+
+                        for(int k = 0; kl = 0; i > 0; k++){
+                            if(i % 2 ==1){
+                                sub[kl] = num[k];
+                            }
+                            i >>= 1;
+                        }
+                        return sub;
+                    }
+
+                </pre>
+            </div>
+            <img src="img/wykladnicza.png" alt="wykres funkcji wykładniczej">
+        </section>
+        <section>
+            <div>
+                <h4><b>O(!n)</b> - Złożoność silnia</h4>
+                <article>Złożonośc, w której czas wykonania rośnie wraz z szybkością silni względem rozmiaru danych</article>
+                
+                <p>Złożonośc ta jest złożoonością obliczeniową problemów(algorytmów) nierozwiązalnych, np. problem komiwojażera.</p>
+            </div>
+            <img src="img/silnia.png" alt="wykres funkcji n!">
+            
+        </section>
+    </main>
+   
+</body>
+</html>
+
+
+
